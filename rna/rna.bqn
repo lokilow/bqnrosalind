@@ -10,16 +10,18 @@
 
 # Return: The transcribed RNA string of t
 
-⟨td, tr, test, parsed ⟩ ⇐
+⟨ td, tr, test, input ⟩ ⇐
 
 td ← "GATGGAACTTGACTACGTAAATT"
 tr ← "GAUGGAACUUGACUACGUAAAUU"
 
 Solve ⇐ {
   indices ← 'T' ⍷ 𝕩
-  indices
+  'U'¨⌾(indices⊸/)𝕩
 }
 
 test ← tr ≡ Solve td
 
-⟨ parsed ⟩ ← •Flines ⊑ •args
+⟨ input ⟩ ← •Flines ⊑ •args
+solution ← Solve input
+•Out solution
